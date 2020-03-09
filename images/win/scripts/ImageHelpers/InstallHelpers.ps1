@@ -161,6 +161,60 @@ Hashtable for service arguments
     }
 }
 
+function Install-VsixExtension
+{
+    Param
+    (
+        [String]$Url,
+        [String]$Name
+    )
+
+    $ReleaseInPath = 'Enterprise'
+    $exitCode = -1
+
+    try
+    {
+        Write-Host "Downloading $Name..."
+        $FilePath = "${env:Temp}\$Name"
+        (New-Object System.Net.WebClient).DownloadFile($Url, $FilePath)
+    }
+    catch
+    {
+        Write-Host "There is an error during $Name downloading"
+        $_
+        exit 1
+    }
+
+    $ArgumentList = ('/quiet', $FilePath)
+
+    Write-Host "Starting Install $Name..."
+    try
+    {
+        $process = Start-Process -FilePath "C:\Program Files (x86)\Microsoft Visual Studio\2019\$ReleaseInPath\Common7\IDE\VSIXInstaller.exe" -ArgumentList $ArgumentList -Wait -PassThru
+    }
+    catch
+    {
+        Write-Host "There is an error during $Name installation"
+        $_
+        exit 1
+    }
+
+    $exitCode = $process.ExitCode
+
+    if ($exitCode -eq 0 -or $exitCode -eq 1001) # 1001 means the extension is already installed
+    {
+        Write-Host "$Name installed successfully"
+    }
+    else
+    {
+        Write-Host "Unsuccessful exit code returned by the installation process: $exitCode."
+        exit 1
+    }
+
+    #Cleanup installation files
+    Remove-Item -Force -Confirm:$false $FilePath
+ }
+
 function Get-VS19ExtensionVersion
 {
     param (
