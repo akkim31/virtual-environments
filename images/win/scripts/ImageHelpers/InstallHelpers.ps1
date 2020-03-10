@@ -169,20 +169,34 @@ function Install-VsixExtension
         [String]$Name
     )
 
+    $FilePath = "${env:Temp}\$Name"
     $ReleaseInPath = 'Enterprise'
     $exitCode = -1
+    $retries = 20
 
-    try
+    while($true)
     {
-        Write-Host "Downloading $Name..."
-        $FilePath = "${env:Temp}\$Name"
-        (New-Object System.Net.WebClient).DownloadFile($Url, $FilePath)
-    }
-    catch
-    {
-        Write-Host "There is an error during $Name downloading"
-        $_
-        exit 1
+        try
+        {
+            Write-Host "Downloading $Name..."
+            (New-Object System.Net.WebClient).DownloadFile($Url, $FilePath)
+        }
+        catch
+        {
+            Write-Host "There is an error during $Name downloading"
+            $_
+            if ($retries -gt 0)
+            {
+                $retries--
+                Write-Host "Waiting 30 seconds before retrying. Retries left: $retries"
+                Start-Sleep -Seconds 30
+            }
+            else {
+                Write-Host "File can't be downloaded"
+                $_
+                exit 1
+            }
+        }
     }
 
     $ArgumentList = ('/quiet', $FilePath)
@@ -213,7 +227,7 @@ function Install-VsixExtension
 
     #Cleanup installation files
     Remove-Item -Force -Confirm:$false $FilePath
- }
+}
 
 function Get-VS19ExtensionVersion
 {
