@@ -180,6 +180,7 @@ function Install-VsixExtension
         {
             Write-Host "Downloading $Name..."
             (New-Object System.Net.WebClient).DownloadFile($Url, $FilePath)
+            break
         }
         catch
         {
