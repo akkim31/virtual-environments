@@ -136,7 +136,7 @@
             "type": "shell",
             "inline": [
                 "mkdir -p /etc/skel/.config/configstore",
-                "echo 'XDG_CONFIG_HOME=$HOME/.config' | tee -a /etc/skel/.bashrc"
+                "echo 'export XDG_CONFIG_HOME=$HOME/.config' | tee -a /etc/skel/.bashrc"
             ],
             "execute_command": "sudo sh -c '{{ .Vars }} {{ .Path }}'"
         },
