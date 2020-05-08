@@ -202,12 +202,7 @@
         {
             "type": "shell",
             "scripts":[
-                "{{template_dir}}/scripts/installers/azpowershell.sh",
-                "{{template_dir}}/scripts/helpers/containercache.sh",
-                "{{template_dir}}/scripts/installers/hosted-tool-cache.sh",
-                "{{template_dir}}/scripts/installers/go.sh",
-                "{{template_dir}}/scripts/installers/python.sh",
-                "{{template_dir}}/scripts/installers/test-toolcache.sh"
+                "{{template_dir}}/scripts/installers/go.sh"
             ],
             "environment_vars": [
                 "METADATA_FILE={{user `metadata_file`}}",
