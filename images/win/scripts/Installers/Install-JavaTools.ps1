@@ -14,7 +14,7 @@ function Set-JavaPath {
     $filter = "*azure-jdk_${version}.*"
     $javaPath = (Get-ChildItem -Path 'C:\Program Files\Java' -Filter $filter | Sort-Object -Property Name -Descending | Select-Object -First 1).FullName
 
-    Write-Host "Set JAVA_HOME_${Version}_X64 variable as $javaPath"
+    Write-Host "Set JAVA_HOME_${Version}_X64 environmental variable as $javaPath"
     setx JAVA_HOME_${Version}_X64 $javaPath /M
 
     if ($Default)
@@ -35,10 +35,10 @@ function Set-JavaPath {
         $newPath = [string]::Join(';', $newPathSegments)
         $newPath = $javaPath + '\bin;' + $newPath
 
-        Write-Host "Add $newPath to PATH"
+        Write-Host "Add $javaPath\bin to PATH"
         Set-MachinePath -NewPath $newPath
 
-        Write-Host "Set JAVA_HOME variable as $javaPath"
+        Write-Host "Set JAVA_HOME environmental variable as $javaPath"
         setx JAVA_HOME $javaPath /M
     }
 
