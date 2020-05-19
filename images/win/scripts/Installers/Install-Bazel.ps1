@@ -6,4 +6,4 @@
 npm install -g @bazel/bazelisk
 
 # Invoke bazel to download the latest version via bazelisk
-bazel
+$null = & bazel
