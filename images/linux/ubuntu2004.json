@@ -182,7 +182,8 @@
                 "{{template_dir}}/scripts/installers/ansible.sh",
                 "{{template_dir}}/scripts/installers/azcopy.sh",
                 "{{template_dir}}/scripts/installers/basic.sh",
-                "{{template_dir}}/scripts/installers/java-tools.sh",
+                "{{template_dir}}/scripts/installers/git.sh",
+                "{{template_dir}}/scripts/installers/java-tools.sh"
             ],
             "environment_vars": [
                 "METADATA_FILE={{user `metadata_file`}}",
