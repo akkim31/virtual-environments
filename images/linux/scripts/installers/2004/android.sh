@@ -30,6 +30,9 @@ rm -f android-sdk.zip
 # Add required permissions
 chmod -R a+X ${ANDROID_SDK_ROOT}
 
+# Sdk manager doesn't work with Java > 8, set version 8 explicitly
+sed -i "2i export JAVA_HOME=${JAVA_HOME_8_X64}" /usr/local/lib/android/sdk/tools/bin/sdkmanager
+
 # Check sdk manager installation
 /usr/local/lib/android/sdk/tools/bin/sdkmanager --list 1>/dev/null
 if [ $? -eq 0 ]
