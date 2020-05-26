@@ -9,8 +9,8 @@ echo 'export XDG_CONFIG_HOME=$HOME/.config' | tee -a /etc/skel/.bashrc
 # Set /mnt as swap
 echo "cat /etc/waagent.conf before the changes"
 cat /etc/waagent.conf
-sed -i 's/ResourceDisk.Format=n/ResourceDisk.Format=y/g'
-sed -i 's/ResourceDisk.EnableSwap=n/ResourceDisk.EnableSwap=y/g'
-sed -i 's/ResourceDisk.SwapSizeMB=0/ResourceDisk.SwapSizeMB=4096/g'
+sed -i 's/ResourceDisk.Format=n/ResourceDisk.Format=y/g' /etc/waagent.conf
+sed -i 's/ResourceDisk.EnableSwap=n/ResourceDisk.EnableSwap=y/g' /etc/waagent.conf
+sed -i 's/ResourceDisk.SwapSizeMB=0/ResourceDisk.SwapSizeMB=4096/g' /etc/waagent.conf
 echo "cat /etc/waagent.conf after the changes"
 cat /etc/waagent.conf
