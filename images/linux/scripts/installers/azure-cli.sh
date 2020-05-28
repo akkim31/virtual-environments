@@ -6,11 +6,19 @@
 
 # Source the helpers for use with the script
 source $HELPER_SCRIPTS/document.sh
+source $HELPER_SCRIPTS/os.sh.sh
 
 # Install Azure CLI (instructions taken from https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-#curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-# Temporary hardcode 2.5.1 installation until version 2.7.0 with the fix for the issue is not released https://github.com/actions/virtual-environments/issues/948
-apt-get install -y azure-cli 2.5.1
+# Temporary downgrade to 2.5.1 installation until version 2.7.0 with the fix for the issue is not released https://github.com/actions/virtual-environments/issues/948
+# There is no 2.5.1 version for Ubuntu20
+if isUbuntu16 || isUbuntu18 ; then
+    label=$(getOSVersionLabel)
+    curl -sL https://aka.ms/InstallAzureCLIDeb | sed --expression "s/-y azure-cli/-y azure-cli=2.5.1-1~$label/g" | sudo bash
+fi
+
+if isUbuntu20 ; then
+    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+fi
 
 # Run tests to determine that the software installed as expected
 echo "Testing to make sure that script performed as expected, and basic scenarios work"
