@@ -3,6 +3,7 @@
 export DEBIAN_FRONTEND=noninteractive
 apt-get -yq update
 apt-get -yq dist-upgrade
+apt-get remove unattended-upgrades
 systemctl disable apt-daily.service
 systemctl disable apt-daily.timer
 systemctl disable apt-daily-upgrade.timer
