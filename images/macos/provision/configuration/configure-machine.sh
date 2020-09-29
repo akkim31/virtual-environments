@@ -1,10 +1,5 @@
 #!/bin/bash -e
 
-# Setting correct time zone
-echo "Configuring system time to GMT..."
-rm -f /etc/localtime
-ln -sf /usr/share/zoneinfo/UTC /etc/localtime
-
 # https://developer.apple.com/documentation/webkit/testing_with_webdriver_in_safari
 # Safari’s executable is located at /usr/bin/safaridriver
 # Configure Safari to Enable WebDriver Support
