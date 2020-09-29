@@ -1,6 +1,4 @@
-#!/bin/bash
-
-set -e
+#!/bin/bash -e
 
 Launch_Daemons="/Library/LaunchDaemons"
 

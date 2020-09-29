@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 source ~/utils/utils.sh
 
 node_common_modules=(

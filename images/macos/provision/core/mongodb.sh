@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -e
 
 # MongoDB object-value database
 # installs last version of MongoDB Community Edition

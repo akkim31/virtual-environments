@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 #Install latest version of postgresql
 brew install postgres

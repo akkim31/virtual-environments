@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 echo Installing Git...
 brew install git
 

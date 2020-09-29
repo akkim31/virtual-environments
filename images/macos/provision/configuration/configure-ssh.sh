@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -e
 
 [[ ! -d ~/.ssh ]] && mkdir ~/.ssh 2>/dev/null
 chmod 777 ~/.ssh

@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 echo "Installing Chrome..."
 brew cask install google-chrome
 

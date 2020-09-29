@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 echo Additional NTP servers adding into /etc/ntp.conf file...
 cat > /etc/ntp.conf << EOF

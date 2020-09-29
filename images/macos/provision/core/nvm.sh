@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -e
 
 ###########################################################################
 # The script installs node version manager with node versions 6,8,10 and 12
@@ -23,13 +23,13 @@ if [ $? -eq 0 ]; then
         nvm alias node12 lts/erbium
         nvm alias node13 v13
         nvm alias node14 v14
-        
+
         if is_Catalina || is_BigSur; then
                 # set system node as default
                 nvm alias default system
         fi
 else
-        echo error 
+        echo error
 fi
 
 echo "Node version manager has been installed successfully"

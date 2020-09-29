@@ -1,3 +1,5 @@
+#!/bin/bash -e
+
 echo "Installing Firefox..."
 brew cask install firefox
 

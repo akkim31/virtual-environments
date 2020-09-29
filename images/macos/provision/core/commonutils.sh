@@ -1,5 +1,4 @@
-#!/bin/sh
-set -e
+#!/bin/bash -e
 
 source ~/utils/utils.sh
 

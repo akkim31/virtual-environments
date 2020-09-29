@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash -e
+
 echo "Installing Cocoapods..."
 
 # Setup the Cocoapods master repo

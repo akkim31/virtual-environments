@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # Homebrew doesn't support installation of command line tools on MacOS 11.0
 # https://github.com/Homebrew/install/blob/master/install.sh#L191

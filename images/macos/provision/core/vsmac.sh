@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash -e
+
 source ~/utils/utils.sh
 source ~/utils/xamarin-utils.sh
 

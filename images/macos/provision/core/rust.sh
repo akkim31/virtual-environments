@@ -1,6 +1,4 @@
-#!/bin/sh
-
-set -e
+#!/bin/bash -e
 
 echo Installing Rustup...
 brew install rustup-init

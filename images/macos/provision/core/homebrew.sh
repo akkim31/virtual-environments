@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash -e
+
 echo "Installing Homebrew..."
 
 source ~/utils/utils.sh

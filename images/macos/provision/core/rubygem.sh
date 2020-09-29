@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash -e
+
 source ~/utils/utils.sh
 
 echo Updating RubyGems...
