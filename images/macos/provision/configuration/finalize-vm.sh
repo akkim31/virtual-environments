@@ -3,10 +3,12 @@
 # Close all finder windows because they can interfere with UI tests
 osascript -e 'tell application "Finder" to close windows'
 
-# Ignore available updates to prevent system pop-ups
-updateName=$(softwareupdate -l | grep "Title: " | awk -F[:,] '{print $2}' | awk '{$1=$1};1')
-if [ ! -z "$updateName" ]; then
-    sudo softwareupdate --ignore "$updateName"
+if is_Less_BigSur; then
+    # Ignore available updates to prevent system pop-ups
+    updateName=$(softwareupdate -l | grep "Title: " | awk -F[:,] '{print $2}' | awk '{$1=$1};1')
+    if [ ! -z "$updateName" ]; then
+        sudo softwareupdate --ignore "$updateName"
+    fi
 fi
 
 # Put documentation to $HOME root
