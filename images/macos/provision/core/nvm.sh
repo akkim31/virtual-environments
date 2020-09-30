@@ -5,7 +5,7 @@
 ###########################################################################
 source ~/utils/utils.sh
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
 
 if [ $? -eq 0 ]; then
         . ~/.bashrc
