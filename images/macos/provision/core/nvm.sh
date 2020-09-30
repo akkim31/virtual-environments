@@ -1,5 +1,4 @@
-#!/bin/bash -e
-
+#!/bin/bash
 ###########################################################################
 # The script installs node version manager with node versions 6,8,10 and 12
 #
