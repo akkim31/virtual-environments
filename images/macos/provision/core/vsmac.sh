@@ -23,9 +23,6 @@ echo "Moving Visual Studio to /Applications/..."
 pushd $TMPMOUNT
 tar cf - "./Visual Studio.app" | tar xf - -C /Applications/
 
-echo "Launching vstools..."
-/Applications/Visual\ Studio.app/Contents/MacOS/vstool
-
 popd
 sudo hdiutil detach "$TMPMOUNT"
 sudo rm -rf "$TMPMOUNT"
