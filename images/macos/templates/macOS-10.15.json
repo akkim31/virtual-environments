@@ -107,7 +107,6 @@
         },
         {
             "type": "shell",
-            "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} {{ .Path }}",
             "scripts": [
                 "./provision/configuration/preimagedata.sh",
                 "./provision/configuration/configure-ssh.sh",
