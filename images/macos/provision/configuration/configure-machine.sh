@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Enable firewall. SSH and VNC opened. Can't did it at bootstrap step, so placed it here
 defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 
