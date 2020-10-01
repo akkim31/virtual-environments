@@ -1,6 +1,12 @@
+#!/bin/bash
 # This script was taken from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/autologin.sh
 # Distributed by MIT license, license can be found at the bottom of this script
+
 ps -p $$
+
+echo "ololol"
+
+ps
 
 echo "Enabling automatic GUI login for the '$USERNAME' user.."
 
