@@ -23,7 +23,6 @@ if is_Less_Catalina; then
 
   echo Installing NPM 3.x.x...
   npm install -g npm@3
-  npm config set prefix /usr/local
 
   echo Installing App Center CLI...
   npm install -g appcenter-cli@^1.0.0
