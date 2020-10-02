@@ -1,4 +1,3 @@
-#!/bin/sh
 
 # This script was taken from https://github.com/timsutton/osx-vm-templates/blob/master/scripts/add-network-interface-detection.sh
 # Distributed by MIT license, license can be found at the bottom of this script
@@ -6,7 +5,7 @@
 # This script adds a Mac OS Launch Daemon, which runs every time the
 # machine is booted. The daemon will re-detect the attached network
 # interfaces. If this is not done, network devices may not work.
-
+ps -p $$
 
 # Setting correct time zone
 echo "Configuring system time to GMT..."
