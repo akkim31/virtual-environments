@@ -24,6 +24,7 @@ xcversion update
 for XCODE_VERSION in "${XCODE_LIST[@]}"
 do
     (
+    WORK_DIR="${WORKDIR}_${XCODE_VERSION}"
     VERSION_TO_INSTALL="$(getXcodeVersionToInstall "$XCODE_VERSION")"
     if [[ -z "$VERSION_TO_INSTALL" ]]; then
         echo "No versions were found matching $XCODE_VERSION"
@@ -34,7 +35,7 @@ do
     xcversion install "$VERSION_TO_INSTALL" --no-install
 
     echo "Extracting Xcode.app ($VERSION_TO_INSTALL) to ${WORK_DIR} ..."
-    extractXcodeXip $WORK_DIR "$VERSION_TO_INSTALL"
+    extractXcodeXip ${WORK_DIR}_${$XCODE_VERSION} "$VERSION_TO_INSTALL"
 
     # Remove "beta" postfix from version
     if [[ $XCODE_VERSION == "12_beta" ]] && is_Catalina ; then
