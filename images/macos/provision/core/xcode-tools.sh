@@ -23,6 +23,7 @@ xcversion update
 
 for XCODE_VERSION in "${XCODE_LIST[@]}"
 do
+    (
     VERSION_TO_INSTALL="$(getXcodeVersionToInstall "$XCODE_VERSION")"
     if [[ -z "$VERSION_TO_INSTALL" ]]; then
         echo "No versions were found matching $XCODE_VERSION"
@@ -60,8 +61,10 @@ do
     fi
 
     find $WORK_DIR -mindepth 1 -delete
+    ) &
 done
-
+wait
+echo "All parallel installation completed"
 echo "Configuring 'runFirstLaunch' for all Xcode versions"
 if is_Less_Catalina; then
     echo "Install additional packages for Xcode ${LATEST_XCODE_VERSION}"
