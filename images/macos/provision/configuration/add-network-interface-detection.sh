@@ -9,9 +9,11 @@ ps -p $$
 
 # Setting correct time zone
 echo "Configuring system time to GMT..."
-rm -f /etc/localtime
-ln -sf /usr/share/zoneinfo/UTC /etc/localtime
-
+echo 0
+false
+echo 1
+true
+echo 2
 
 PLIST=/Library/LaunchDaemons/sonoma.detectnewhardware.plist
 cat <<EOF > "${PLIST}"
