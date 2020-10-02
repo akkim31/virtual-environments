@@ -90,7 +90,7 @@
         },
         {
             "type": "shell",
-            "execute_command": "{{ .Vars }} sudo /bin/bash -e {{ .Path }}'",
+            "execute_command": "{{ .Vars }} sudo /bin/bash -e {{ .Path }}",
             "scripts": [
                 "./provision/configuration/add-network-interface-detection.sh",
                 "./provision/configuration/autologin.sh",
