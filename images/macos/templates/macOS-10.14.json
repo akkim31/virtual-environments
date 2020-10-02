@@ -90,7 +90,7 @@
         },
         {
             "type": "shell",
-            "execute_command": "chmod +x {{ .Path }}; sudo {{ .Vars }} {{ .Path }}",
+            "execute_command": "sudo /bin/bash -c 'set -e; {{ .Vars }} {{ .Path }}'",
             "scripts": [
                 "./provision/configuration/add-network-interface-detection.sh",
                 "./provision/configuration/autologin.sh",

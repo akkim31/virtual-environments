@@ -6,6 +6,14 @@
 # This script adds a Mac OS Launch Daemon, which runs every time the
 # machine is booted. The daemon will re-detect the attached network
 # interfaces. If this is not done, network devices may not work.
+
+
+# Setting correct time zone
+echo "Configuring system time to GMT..."
+rm -f /etc/localtime
+ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+
+
 PLIST=/Library/LaunchDaemons/sonoma.detectnewhardware.plist
 cat <<EOF > "${PLIST}"
 <?xml version="1.0" encoding="UTF-8"?>
