@@ -26,6 +26,7 @@ for XCODE_VERSION in "${XCODE_LIST[@]}"
 do
     ((i=i%NUMBER_OF_PARALLEL_INSTALLATIONS)); ((i++==0)) && wait
     (
+    WORK_DIR="${WORKDIR}_${XCODE_VERSION}"
     VERSION_TO_INSTALL="$(getXcodeVersionToInstall "$XCODE_VERSION")"
     if [[ -z "$VERSION_TO_INSTALL" ]]; then
         echo "No versions were found matching $XCODE_VERSION"
