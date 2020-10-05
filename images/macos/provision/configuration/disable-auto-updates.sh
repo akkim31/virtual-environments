@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 
 # Disabling automatic updates
 sudo softwareupdate --schedule off

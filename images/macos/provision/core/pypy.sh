@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 ################################################################################
 ##  File:  pypy.sh
 ##  Desc:  Installs PyPy

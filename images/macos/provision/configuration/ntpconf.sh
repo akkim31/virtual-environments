@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 
 echo Additional NTP servers adding into /etc/ntp.conf file...
 cat > /etc/ntp.conf << EOF

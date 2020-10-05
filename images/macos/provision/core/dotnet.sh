@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 
 ###########################################################################
 # The main idea of this script is to automate dotnet installs

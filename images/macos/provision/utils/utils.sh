@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 
 download_with_retries() {
 # Due to restrictions of bash functions, positional arguments are used here.

@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 
 # Close all finder windows because they can interfere with UI tests
 osascript -e 'tell application "Finder" to close windows'

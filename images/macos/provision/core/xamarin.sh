@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 
 source ~/utils/utils.sh
 source ~/utils/xamarin-utils.sh

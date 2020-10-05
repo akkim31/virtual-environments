@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 
 echo "Installing Chrome..."
 brew cask install google-chrome

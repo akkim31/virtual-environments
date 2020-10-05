@@ -1,3 +1,3 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 
 shutdown -r now

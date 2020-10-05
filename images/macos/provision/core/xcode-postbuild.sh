@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 
 source ~/utils/utils.sh
 XCODE_LIST=($(get_xcode_list_from_toolset))

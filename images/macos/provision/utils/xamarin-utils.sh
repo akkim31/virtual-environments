@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 
 # Xamarin can clean their SDKs while updating to newer versions,
 # so we should be able to detect it during image generation
@@ -159,7 +159,7 @@ installNunitConsole() {
   local MONO_VERSION=$1
 
   cat <<EOF > ${TMPMOUNT}/${NUNIT3_CONSOLE_BIN}
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 exec /Library/Frameworks/Mono.framework/Versions/${MONO_VERSION}/bin/mono --debug \$MONO_OPTIONS $NUNIT3_PATH/nunit3-console.exe "\$@"
 EOF
   sudo chmod +x ${TMPMOUNT}/${NUNIT3_CONSOLE_BIN}

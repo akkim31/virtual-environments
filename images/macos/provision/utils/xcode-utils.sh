@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 
 createXamarinProvisionatorSymlink() {
     local XCODE_VERSION="$1"

@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -e -o pipefail
 ###########################################################################
 # The script installs node version manager with node versions 6,8,10 and 12
 #
