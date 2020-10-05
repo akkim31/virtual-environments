@@ -33,6 +33,10 @@ do
         exit 1
     fi
 
+    # The actual working folder should be set to version-specific
+    mkdir "${WORK_DIR}_${XCODE_VERSION}"
+    cd "${WORK_DIR}_${XCODE_VERSION}"
+
     echo "Downloading Xcode $VERSION_TO_INSTALL ..."
     xcversion install "$VERSION_TO_INSTALL" --no-install
 
