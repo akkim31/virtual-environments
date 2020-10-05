@@ -33,26 +33,12 @@ do
         exit 1
     fi
 
-    # troubleshoot
-    pwd
-    ls
-
     echo "Downloading Xcode $VERSION_TO_INSTALL ..."
     xcversion install "$VERSION_TO_INSTALL" --no-install
 
-    # troubleshoot
-    pwd
-    ls
-    echo $WORK_DIR
-
     # Create destination folder and move xip
     mkdir ${WORK_DIR}
-    mv -f "./Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
-
-    # troubleshoot
-    pwd
-    ls
-    ls ${WORK_DIR}
+    mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
 
     echo "Extracting Xcode.app ($VERSION_TO_INSTALL) to ${WORK_DIR} ..."
     extractXcodeXip $WORK_DIR "$VERSION_TO_INSTALL"
