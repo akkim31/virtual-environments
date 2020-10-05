@@ -9,6 +9,11 @@ ps -p $$
 
 # Setting correct time zone
 echo "Configuring system time to GMT..."
+rm -f /etc/localtime
+ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+
+# Setting correct time zone
+echo "Configuring system time to GMT..."
 echo 0
 false
 echo 1
