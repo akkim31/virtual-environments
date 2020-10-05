@@ -3,7 +3,7 @@ jobs:
   displayName: Image Generation (${{ parameters.image_label }})
   timeoutInMinutes: 720
   pool:
-    name: Mac-Cloud Image Generation
+    name: Mac-Cloud V2 Image Generation
   variables:
   - group: Mac-Cloud Image Generation
   - group: Mac-Cloud Image Generation Key Vault
