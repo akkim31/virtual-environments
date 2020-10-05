@@ -5,7 +5,8 @@
 ###########################################################################
 source ~/utils/utils.sh
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash
+VERSION=$(curl -s https://api.github.com/repos/nvm-sh/nvm/releases/latest | jq -r '.tag_name')
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$VERSION/install.sh | bash
 
 if [ $? -eq 0 ]; then
         . ~/.bashrc
