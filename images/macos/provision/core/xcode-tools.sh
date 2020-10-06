@@ -38,8 +38,18 @@ do
 
     # Create destination folder and move xip
     mkdir ${WORK_DIR}
-    find "${HOME}/Library/Caches/XcodeInstall/" -name "Xcode_${XCODE_VERSION}.xip" -o -name "Xcode_${XCODE_VERSION}_*.xip" -type f
-    find "${HOME}/Library/Caches/XcodeInstall/" -name "Xcode_${XCODE_VERSION}.xip" -o -name "Xcode_${XCODE_VERSION}_*.xip" -type f -exec mv -f {} "${WORK_DIR}" \;
+
+    # hack for beta
+    if [[ $XCODE_VERSION == "12_beta" ]] && is_Catalina ; then
+        find "${HOME}/Library/Caches/XcodeInstall/" -name "Xcode_${XCODE_VERSION}.xip" -o -name "Xcode_${XCODE_VERSION}_*.xip" -type f -exec mv -f {} "${WORK_DIR}" \;
+    else
+        mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
+    fi
+
+    if [[ ! -d "${WORKING_DIR}/Xcode_${XCODE_VERSION}.xip" ]]; then
+        echo "Xcode_${XCODE_VERSION}.xip doesn't exist before extracting"
+        exit 1
+    fi
 
     echo "Extracting Xcode.app ($VERSION_TO_INSTALL) to ${WORK_DIR} ..."
     extractXcodeXip $WORK_DIR "$VERSION_TO_INSTALL"
