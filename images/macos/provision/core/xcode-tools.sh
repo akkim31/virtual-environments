@@ -41,20 +41,20 @@ do
     echo "xip path is ${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip"
     echo "xip destination is ${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
 
-    mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
+    ROOT_FOLDER_FILES=$(ls "${HOME}/Library/Caches/XcodeInstall" | grep Xcode)
+    echo "get root folder files = ${ROOT_FOLDER_FILES}"
 
-    echo "get root folder files"
-    ls "${HOME}/Library/Caches/XcodeInstall/" | grep Xcode
-
-    echo "get  version -specific root folder files"
-    ls "${HOME}/Library/Caches/XcodeInstall/" | grep Xcode
+    VERSION_SPECIFIC_FILES=$(ls "${WORK_DIR}" | grep Xcode)
+    echo "get  version -specific root folder files = ${VERSION_SPECIFIC_FILES}"
 
     # hack for beta
     if [[ $XCODE_VERSION == "*beta*" ]] && is_Catalina ; then
         find "${HOME}/Library/Caches/XcodeInstall/" -name "Xcode_${XCODE_VERSION}.xip" -o -name "Xcode_${XCODE_VERSION}_*.xip" -type f -exec mv -f {} "${WORK_DIR}" \;
+    elif
+        mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
     fi
 
-    if [[ ! -d "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip" ]]; then
+    if [[ ! -f "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip" ]]; then
         echo "Xcode_${XCODE_VERSION}.xip doesn't exist before extracting"
         exit 1
     fi
