@@ -90,7 +90,7 @@
         },
         {
             "type": "shell",
-            "execute_command": "chmod +x {{ .Path }}; /bin/bash -e {{ .Vars }} {{ .Path }}",
+            "execute_command": "chmod +x {{ .Path }}; bash -e {{ .Vars }} {{ .Path }}",
             "scripts": [
                 "./provision/core/fail-script.sh"
             ],
