@@ -90,7 +90,7 @@
         },
         {
             "type": "shell",
-            "execute_command": "/bin/bash -cex {{ .Vars }} {{ .Path }}",
+            "execute_command": "/bin/bash -cex {{ .Vars }} {{ .Script }}",
             "scripts": [
                 "./provision/configuration/add-network-interface-detection.sh",
                 "./provision/configuration/autologin.sh",
