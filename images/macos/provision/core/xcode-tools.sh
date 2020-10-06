@@ -49,11 +49,11 @@ do
     echo "get  version -specific root folder files = ${VERSION_SPECIFIC_FOLDERS} for ${XCODE_VERSION}"
 
     # hack for beta
-    if [[ $XCODE_VERSION == *"beta"* ]] && is_Catalina ; then
+    # if [[ $XCODE_VERSION == *"beta"* ]] && is_Catalina ; then
         find "${HOME}/Library/Caches/XcodeInstall/" -name "Xcode_${XCODE_VERSION}.xip" -o -name "Xcode_${XCODE_VERSION}_*.xip" -type f -exec mv -f {} "${WORK_DIR}" \;
-    else
-        mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
-    fi
+    # else
+    #     mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
+    # fi
 
     if [[ ! -f "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip" ]]; then
         echo "Xcode_${XCODE_VERSION}.xip doesn't exist before extracting"
