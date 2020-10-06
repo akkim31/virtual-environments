@@ -130,6 +130,8 @@
             "pause_before": "30s",
             "scripts": [
                 "./provision/core/homebrew.sh",
+                "./provision/core/python.sh",
+                "./provision/core/openssl.sh",
                 "./provision/core/ruby.sh",
                 "./provision/core/rubygem.sh"
             ]
