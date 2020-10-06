@@ -38,10 +38,19 @@ do
 
     # Create destination folder and move xip
     mkdir ${WORK_DIR}
+    echo "xip path is ${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip"
+    echo "xip destination is ${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
+
     mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
 
+    echo "get root folder files"
+    ls "${HOME}/Library/Caches/XcodeInstall/" | grep Xcode
+
+    echo "get  version -specific root folder files"
+    ls "${HOME}/Library/Caches/XcodeInstall/" | grep Xcode
+
     # hack for beta
-    if [[ $XCODE_VERSION == "12_beta" ]] && is_Catalina ; then
+    if [[ $XCODE_VERSION == "*beta*" ]] && is_Catalina ; then
         find "${HOME}/Library/Caches/XcodeInstall/" -name "Xcode_${XCODE_VERSION}.xip" -o -name "Xcode_${XCODE_VERSION}_*.xip" -type f -exec mv -f {} "${WORK_DIR}" \;
     fi
 
