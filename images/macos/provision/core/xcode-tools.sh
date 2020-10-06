@@ -46,7 +46,7 @@ do
         mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
     fi
 
-    if [[ ! -d "${WORKING_DIR}/Xcode_${XCODE_VERSION}.xip" ]]; then
+    if [[ ! -d "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip" ]]; then
         echo "Xcode_${XCODE_VERSION}.xip doesn't exist before extracting"
         exit 1
     fi
