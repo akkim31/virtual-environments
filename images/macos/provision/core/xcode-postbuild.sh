@@ -15,6 +15,10 @@ do
     #add sleep to let CoreSimulatorService to exit
     sleep 3
 
+    # Version 12.2_beta installed into 12.2 directory
+    if [[ $XCODE_VERSION == "12.2_beta" ]] ; then
+        XCODE_VERSION="12.2"
+    fi
     # Select xcode version by default
     sudo xcode-select -s "/Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer"
 
