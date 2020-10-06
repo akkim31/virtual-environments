@@ -90,19 +90,11 @@
         },
         {
             "type": "shell",
-            "execute_command": "{{ .Vars }} /bin/bash {{ .Path }}",
+            "execute_command": "{{ .Vars }} /bin/bash -e {{ .Path }}",
             "scripts": [
-                "./provision/configuration/add-network-interface-detection.sh",
-                "./provision/configuration/autologin.sh",
-                "./provision/configuration/disable-auto-updates.sh",
-                "./provision/configuration/screensaver-off.sh",
-                "./provision/configuration/ntpconf.sh",
-                "./provision/configuration/max-files.sh",
-                "./provision/configuration/shell-change.sh"
+                "./provision/core/fail-script.sh"
             ],
             "environment_vars": [
-                "PASSWORD={{user `vm_password`}}",
-                "USERNAME={{user `vm_username`}}",
                 "SHELLOPTS=e"
             ]
         },
