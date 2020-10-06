@@ -20,7 +20,7 @@ WORK_DIR="${HOME}/Library/Caches/XcodeInstall"
 
 # Update the list of available versions
 xcversion update
-NUMBER_OF_PARALLEL_INSTALLATIONS=3
+NUMBER_OF_PARALLEL_INSTALLATIONS=1
 
 for XCODE_VERSION in "${XCODE_LIST[@]}"
 do
@@ -37,15 +37,16 @@ do
     xcversion install "$VERSION_TO_INSTALL" --no-install
 
     # Create destination folder and move xip
-    mkdir ${WORK_DIR}
+    mkdir "${WORK_DIR}"
+
     echo "xip path is ${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip"
     echo "xip destination is ${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
 
     ROOT_FOLDER_FILES=$(ls "${HOME}/Library/Caches/XcodeInstall" | grep Xcode)
     echo "get root folder files = ${ROOT_FOLDER_FILES} for ${XCODE_VERSION}"
 
-    VERSION_SPECIFIC_FILES=$(ls "${WORK_DIR}" | grep Xcode)
-    echo "get  version -specific root folder files = ${VERSION_SPECIFIC_FILES} for ${XCODE_VERSION}"
+    VERSION_SPECIFIC_FOLDERS=$(ls "${HOME}/Library/Caches/" | grep Xcode)
+    echo "get  version -specific root folder files = ${VERSION_SPECIFIC_FOLDERS} for ${XCODE_VERSION}"
 
     # hack for beta
     if [[ $XCODE_VERSION == *"beta"* ]] && is_Catalina ; then
