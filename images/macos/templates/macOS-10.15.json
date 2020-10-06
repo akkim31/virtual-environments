@@ -90,7 +90,7 @@
         },
         {
             "type": "shell",
-            "execute_command": "{{ .Vars }} /bin/bash -e {{ .Path }}",
+            "execute_command": "/bin/bash -e {{ .Vars }} {{ .Path }}",
             "scripts": [
                 "./provision/core/fail-script.sh"
             ],
