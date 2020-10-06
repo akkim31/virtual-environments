@@ -42,10 +42,10 @@ do
     echo "xip destination is ${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
 
     ROOT_FOLDER_FILES=$(ls "${HOME}/Library/Caches/XcodeInstall" | grep Xcode)
-    echo "get root folder files = ${ROOT_FOLDER_FILES}"
+    echo "get root folder files = ${ROOT_FOLDER_FILES} for ${XCODE_VERSION}"
 
     VERSION_SPECIFIC_FILES=$(ls "${WORK_DIR}" | grep Xcode)
-    echo "get  version -specific root folder files = ${VERSION_SPECIFIC_FILES}"
+    echo "get  version -specific root folder files = ${VERSION_SPECIFIC_FILES} for ${XCODE_VERSION}"
 
     # hack for beta
     if [[ $XCODE_VERSION == "*beta*" ]] && is_Catalina ; then
