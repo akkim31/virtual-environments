@@ -8,6 +8,10 @@ set -e
 source ~/utils/utils.sh
 source ~/utils/xcode-utils.sh
 
+# try to disable network offloading because of archive errors
+sudo sysctl -w net.link.generic.system.hwcksum_tx=0
+sudo sysctl -w net.link.generic.system.hwcksum_rx=0
+
 if [ -z $XCODE_INSTALL_USER ] || [ -z $XCODE_INSTALL_PASSWORD ]; then
     echo "Required environment variables XCODE_INSTALL_USER and XCODE_INSTALL_PASSWORD are not set"
     exit 1
