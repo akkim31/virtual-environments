@@ -20,7 +20,7 @@ WORK_DIR="${HOME}/Library/Caches/XcodeInstall"
 
 # Update the list of available versions
 xcversion update
-NUMBER_OF_PARALLEL_INSTALLATIONS=1
+NUMBER_OF_PARALLEL_INSTALLATIONS=3
 
 for XCODE_VERSION in "${XCODE_LIST[@]}"
 do
@@ -57,11 +57,6 @@ do
 
     VERSION_SPECIFIC_FOLDER_CONTENT=$(ls "${HOME}/Library/Caches/XcodeInstall_${XCODE_VERSION}/")
     echo "get version specific folder content after mv xip archive ${VERSION_SPECIFIC_FOLDER_CONTENT} for ${XCODE_VERSION}"
-
-    # if [[ ! -f "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip" ]]; then
-    #     echo "Xcode_${XCODE_VERSION}.xip doesn't exist before extracting"
-    #     exit 1
-    # fi
 
     echo "Extracting Xcode.app ($VERSION_TO_INSTALL) to ${WORK_DIR} ..."
     extractXcodeXip $WORK_DIR "$VERSION_TO_INSTALL"
