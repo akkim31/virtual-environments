@@ -24,7 +24,7 @@ WORK_DIR="${HOME}/Library/Caches/XcodeInstall"
 
 # Update the list of available versions
 xcversion update
-NUMBER_OF_PARALLEL_INSTALLATIONS=2
+NUMBER_OF_PARALLEL_INSTALLATIONS=4
 
 for XCODE_VERSION in "${XCODE_LIST[@]}"
 do
