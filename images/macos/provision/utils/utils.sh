@@ -109,7 +109,7 @@ install_clt() {
     clt_placeholder="/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress"
     sudo touch $clt_placeholder
     clt_label_command="/usr/sbin/softwareupdate -l |
-                        grep -B 1 -E 'Command Line Tools1' |
+                        grep -B 1 -E 'Command Line Tools' |
                         awk -F'*' '/^ *\\*/ {print \$2}' |
                         sed -e 's/^ *Label: //' -e 's/^ *//' |
                         sort -V |

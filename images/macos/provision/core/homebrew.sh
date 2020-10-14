@@ -5,7 +5,7 @@ source ~/utils/utils.sh
 echo "Installing Command Line Tools..."
 install_clt
 
-# Retry installation if tools are not installed from the first attempt
+# Retry the installation if tools are not installed from the first attempt
 retries=30
 sleepInterval=60
 while ! is_clt_installed; do
