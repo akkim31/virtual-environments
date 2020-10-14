@@ -99,7 +99,7 @@ verlte() {
 }
 
 is_clt_installed() {
-    clt_path=`bash -c "xcode-select -p 2>&1"`
+    clt_path=`xcode-select -p 2>&1`
     [[ -d "$clt_path" ]]
 }
 
@@ -114,7 +114,7 @@ install_clt() {
                         sed -e 's/^ *Label: //' -e 's/^ *//' |
                         sort -V |
                         tail -n1"
-    clt_label=$(eval $clt_label_command)
+    clt_label=$(eval $clt_label_command) || true
     if [[ -n "$clt_label" ]]; then
         echo "Installing $clt_label"
         sudo "/usr/sbin/softwareupdate" "-i" "$clt_label"
