@@ -98,8 +98,9 @@ verlte() {
     [  "$1" = "$sortedVersion" ]
 }
 
-should_install_clt() {
-    ! [[ -e "/Library/Developer/CommandLineTools/usr/bin/git" ]]
+is_clt_installed() {
+    clt_path=`bash -c "xcode-select -p 2>&1"`
+    [[ -d "$clt_path" ]]
 }
 
 install_clt() {
@@ -108,7 +109,7 @@ install_clt() {
     clt_placeholder="/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress"
     sudo touch $clt_placeholder
     clt_label_command="/usr/sbin/softwareupdate -l |
-                        grep -B 1 -E 'Command Line Tools' |
+                        grep -B 1 -E 'Command Line Tools1' |
                         awk -F'*' '/^ *\\*/ {print \$2}' |
                         sed -e 's/^ *Label: //' -e 's/^ *//' |
                         sort -V |

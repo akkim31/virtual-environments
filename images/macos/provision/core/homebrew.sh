@@ -1,25 +1,22 @@
-#!/bin/sh
+#!/bin/bash -e -o pipefail
 
 source ~/utils/utils.sh
 
 echo "Installing Command Line Tools..."
+install_clt
+
+# Retry installation if tools are not installed from the first attempt
 retries=30
 sleepInterval=60
-while [[ $retries -ge 0 ]]; do
-    if should_install_clt; then
-        if [[ $retries -eq 0 ]]; then
-            echo "Unable to find the Command Line Tools, all the attempts exhausted"
-            exit 1
-        fi
-        echo "Command Line Tools not found, trying to install them via softwareupdates, $retries attempts left"
-        install_clt
-        ((retries--))
-    else
-        echo "Command Line Tools are installed, continue"
-        sudo "/usr/bin/xcode-select" "--switch" "/Library/Developer/CommandLineTools"
-        break
+while ! is_clt_installed; do
+    if [[ $retries -eq 0 ]]; then
+        echo "Unable to find the Command Line Tools, all the attempts exhausted"
+        exit 1
     fi
-    echo "Wait $sleepInterval seconds before the next check for the Command Line Tools"
+    echo "Command Line Tools not found, trying to install them via softwareupdates, $retries attempts left"
+    install_clt
+    ((retries--))
+    echo "Wait $sleepInterval seconds before the next check for installed Command Line Tools"
     sleep $sleepInterval
 done
 
