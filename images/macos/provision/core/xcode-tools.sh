@@ -43,14 +43,14 @@ do
     # Create destination folder and move xip
     mkdir "${WORK_DIR}"
 
-    echo "xip path is ${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip"
-    echo "xip destination is ${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
+    # echo "xip path is ${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip"
+    # echo "xip destination is ${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
 
-    ROOT_FOLDER_FILES=$(ls "${HOME}/Library/Caches/XcodeInstall" | grep Xcode)
-    echo "get root folder files = ${ROOT_FOLDER_FILES} for ${XCODE_VERSION}"
+    # ROOT_FOLDER_FILES=$(ls "${HOME}/Library/Caches/XcodeInstall" | grep Xcode)
+    # echo "get root folder files = ${ROOT_FOLDER_FILES} for ${XCODE_VERSION}"
 
-    VERSION_SPECIFIC_FOLDERS=$(ls "${HOME}/Library/Caches/" | grep Xcode)
-    echo "get version specific root folder files = ${VERSION_SPECIFIC_FOLDERS} for ${XCODE_VERSION}"
+    # VERSION_SPECIFIC_FOLDERS=$(ls "${HOME}/Library/Caches/" | grep Xcode)
+    # echo "get version specific root folder files = ${VERSION_SPECIFIC_FOLDERS} for ${XCODE_VERSION}"
 
     # hack for 12.0.1 version
     if [[ $XCODE_VERSION == "12" ]] && is_Catalina ; then
@@ -64,10 +64,10 @@ do
         mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
     fi
 
-    VERSION_SPECIFIC_FOLDER_CONTENT=$(ls "${HOME}/Library/Caches/XcodeInstall_${XCODE_VERSION}/")
-    echo "get version specific folder content after mv xip archive ${VERSION_SPECIFIC_FOLDER_CONTENT} for ${XCODE_VERSION}"
+    # VERSION_SPECIFIC_FOLDER_CONTENT=$(ls "${HOME}/Library/Caches/XcodeInstall_${XCODE_VERSION}/")
+    # echo "get version specific folder content after mv xip archive ${VERSION_SPECIFIC_FOLDER_CONTENT} for ${XCODE_VERSION}"
 
-    echo "Extracting Xcode.app ($VERSION_TO_INSTALL) to ${WORK_DIR} ..."
+    # echo "Extracting Xcode.app ($VERSION_TO_INSTALL) to ${WORK_DIR} ..."
     extractXcodeXip $WORK_DIR "$VERSION_TO_INSTALL"
 
     XCODE_VERSION=$(echo $XCODE_VERSION | cut -d"_" -f 1)
