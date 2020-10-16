@@ -52,14 +52,11 @@ do
     # VERSION_SPECIFIC_FOLDERS=$(ls "${HOME}/Library/Caches/" | grep Xcode)
     # echo "get version specific root folder files = ${VERSION_SPECIFIC_FOLDERS} for ${XCODE_VERSION}"
 
-    # hack for 12.0.1 version
-    if [[ $XCODE_VERSION == "12" ]] && is_Catalina ; then
-        XCODE_VERSION="12.0.1"
-    fi
-
     # hack for beta
     if [[ $XCODE_VERSION == *"beta"* ]] && is_Catalina ; then
         find "${HOME}/Library/Caches/XcodeInstall/" -name "Xcode_${XCODE_VERSION}.xip" -o -name "Xcode_${XCODE_VERSION}_*.xip" -type f -exec mv -f {} "${WORK_DIR}" \;
+    elif [[ $XCODE_VERSION == "12" ]]; then
+        mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_12.0.1.xip" "${WORK_DIR}/Xcode_12.xip"
     else
         mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
     fi
