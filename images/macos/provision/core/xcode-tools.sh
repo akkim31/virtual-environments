@@ -65,7 +65,11 @@ do
     # echo "get version specific folder content after mv xip archive ${VERSION_SPECIFIC_FOLDER_CONTENT} for ${XCODE_VERSION}"
 
     # echo "Extracting Xcode.app ($VERSION_TO_INSTALL) to ${WORK_DIR} ..."
-    extractXcodeXip $WORK_DIR "$VERSION_TO_INSTALL"
+    if [[ $XCODE_VERSION == "12" ]]; then
+        extractXcodeXip $WORK_DIR "12"
+    else
+        extractXcodeXip $WORK_DIR "$VERSION_TO_INSTALL"
+    fi
 
     XCODE_VERSION=$(echo $XCODE_VERSION | cut -d"_" -f 1)
 
