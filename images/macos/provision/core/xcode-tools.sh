@@ -46,19 +46,28 @@ do
     # echo "xip path is ${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip"
     # echo "xip destination is ${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
 
-    # ROOT_FOLDER_FILES=$(ls "${HOME}/Library/Caches/XcodeInstall" | grep Xcode)
-    # echo "get root folder files = ${ROOT_FOLDER_FILES} for ${XCODE_VERSION}"
+    ROOT_FOLDER_FILES=$(ls "${HOME}/Library/Caches/XcodeInstall" | grep Xcode)
+    echo "get root folder files = ${ROOT_FOLDER_FILES} for ${XCODE_VERSION}"
 
-    # VERSION_SPECIFIC_FOLDERS=$(ls "${HOME}/Library/Caches/" | grep Xcode)
-    # echo "get version specific root folder files = ${VERSION_SPECIFIC_FOLDERS} for ${XCODE_VERSION}"
+    VERSION_SPECIFIC_FOLDERS=$(ls "${HOME}/Library/Caches/" | grep Xcode)
+    echo "get version specific root folder files = ${VERSION_SPECIFIC_FOLDERS} for ${XCODE_VERSION}"
 
     # hack for beta
     if [[ $XCODE_VERSION == *"beta"* ]] && is_Catalina ; then
         find "${HOME}/Library/Caches/XcodeInstall/" -name "Xcode_${XCODE_VERSION}.xip" -o -name "Xcode_${XCODE_VERSION}_*.xip" -type f -exec mv -f {} "${WORK_DIR}" \;
+        echo "work dir content after move"
+        ls "${WORK_DIR}"
+        echo "==="
     elif [[ $XCODE_VERSION == "12" ]]; then
         mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_12.0.1.xip" "${WORK_DIR}/Xcode_12.xip"
+        echo "work dir content after move"
+        ls "${WORK_DIR}"
+        echo "==="
     else
         mv -f "${HOME}/Library/Caches/XcodeInstall/Xcode_${XCODE_VERSION}.xip" "${WORK_DIR}/Xcode_${XCODE_VERSION}.xip"
+        echo "work dir content after move"
+        ls "${WORK_DIR}"
+        echo "==="
     fi
 
     # VERSION_SPECIFIC_FOLDER_CONTENT=$(ls "${HOME}/Library/Caches/XcodeInstall_${XCODE_VERSION}/")
@@ -73,11 +82,17 @@ do
 
     XCODE_VERSION=$(echo $XCODE_VERSION | cut -d"_" -f 1)
 
+    # Print XCODE_VERSION
+    echo "xcode version variable is set to ${XCODE_VERSION} before validate"
+
     echo "Checking if unpacked Xcode ${XCODE_VERSION} is valid"
     validateXcodeIntegrity "$WORK_DIR"
 
     # Move Xcode to /Applications
     mv -f "${WORK_DIR}/Xcode.app" "/Applications/Xcode_${XCODE_VERSION}.app"
+
+    # Check /Applications folder after *.app move
+    ls -la /Applications/
 
     echo "Accepting license for Xcode ${XCODE_VERSION}..."
     approveLicense $XCODE_VERSION
