@@ -25,12 +25,12 @@ WORK_DIR="${HOME}/Library/Caches/XcodeInstall"
 # Update the list of available versions
 xcversion update
 NUMBER_OF_PARALLEL_INSTALLATIONS=13
+NUMBER_OF_PARALLEL_DOWNLOADS=6
 
 for XCODE_VERSION in "${XCODE_LIST[@]}"
 do
-    ((i=i%NUMBER_OF_PARALLEL_INSTALLATIONS)); ((i++==0)) && wait
+    ((i=i%NUMBER_OF_PARALLEL_DOWNLOADS)); ((i++==0)) && wait
     (
-    WORK_DIR="${WORK_DIR}_${XCODE_VERSION}"
     VERSION_TO_INSTALL="$(getXcodeVersionToInstall "$XCODE_VERSION")"
     if [[ -z "$VERSION_TO_INSTALL" ]]; then
         echo "No versions were found matching $XCODE_VERSION"
@@ -39,6 +39,18 @@ do
 
     echo "Downloading Xcode $VERSION_TO_INSTALL ..."
     xcversion install "$VERSION_TO_INSTALL" --no-install
+    ) &
+done
+wait
+
+for XCODE_VERSION in "${XCODE_LIST[@]}"
+do
+    ((i=i%NUMBER_OF_PARALLEL_INSTALLATIONS)); ((i++==0)) && wait
+    (
+    WORK_DIR="${WORK_DIR}_${XCODE_VERSION}"
+    VERSION_TO_INSTALL="$(getXcodeVersionToInstall "$XCODE_VERSION")"
+
+    echo "Assume that the download is alreay completed"
 
     # Create destination folder and move xip
     mkdir "${WORK_DIR}"
