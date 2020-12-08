@@ -13,6 +13,9 @@ download_with_retries $Python2Url "/tmp" "python2.pkg"
 sudo installer -pkg /tmp/python2.pkg -target /
 pip install --upgrade pip
 
+echo "Install Python2 certificates"
+bash -c "/Applications/Python\ 2.7/Install\ Certificates.command"
+
 echo "Installing pipx"
 export PIPX_BIN_DIR=/usr/local/opt/pipx_bin
 export PIPX_HOME=/usr/local/opt/pipx
