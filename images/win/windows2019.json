@@ -6,7 +6,7 @@
         "tenant_id": "{{env `ARM_TENANT_ID`}}",
         "object_id": "{{env `ARM_OBJECT_ID`}}",
         "resource_group": "{{env `ARM_RESOURCE_GROUP`}}",
-        "storage_account": "{{env `ARM_STORAGE_ACCOUNT`}}",
+        "storage_account": "ghimagegenerationpremium",
         "temp_resource_group_name": "{{env `TEMP_RESOURCE_GROUP_NAME`}}",
         "location": "{{env `ARM_RESOURCE_LOCATION`}}",
         "virtual_network_name": "{{env `VNET_NAME`}}",
